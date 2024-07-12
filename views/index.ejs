@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <div class="wrapper">
+        <%- include('./partials/nav.ejs') %>
+
+        <main class="content">
+
+            <div class="container">
+
+                <h2>Random Photo Gallery</h2>
+
+                <div class="gallery-container">
+
+                    <div class="gallery">
+
+                        <% images.forEach(image => { %>
+                            <div class="gallery-item">
+
+                                <img src="<%= image.imageURL %>" alt="<%= image.imageTitle %>">
+
+                                <div class="image-info">
+
+                                    <p><strong>Title:</strong> <%= image.imageTitle.toUpperCase() %></p>
+                                    <p><strong>Date:</strong> <%= image.date.toDateString() %></p>
+
+                                    <div class="color-info">
+
+                                        <p><strong>Dominant Color:</strong> <span class="color-hex"><%= image.dominantColor %></span></p>
+
+                                        <div class="color-box" style="background-color: <%= image.dominantColor %>;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include('./partials/footer.ejs') %>
+    </div>
+</body>
+</html>
+
+
